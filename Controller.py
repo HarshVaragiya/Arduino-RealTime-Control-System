@@ -1,7 +1,22 @@
 import keyboard 
 import numpy as np
 import time 
-import serial           
+import os 
+try:
+    import serial
+except ImportError:
+    try :
+        os.system("pip install pyserial")
+    except:
+        print("Error Importing Pyserial Library          ")
+        print("Try Installing it with this command       ")
+        print(" linux   - pip install pyserial           ")
+        print(" windows - python -m pip install pyserial ")
+        print(" if you get error installing it, try uninstalling 'serial' and 'pyserial' library using this command")
+        print(" linux   - pip uninstall serial,pyserial  ")
+        print(" windows - python -m pip uninstall serial,pyserial ")
+        print(" Then Try installing it again.")
+        exit()
 ser = serial.Serial('COM5', 57600)                                        # change according to your serial port and baud rate 
 time.sleep(2)                                                             # wait till arduino resets 
 
